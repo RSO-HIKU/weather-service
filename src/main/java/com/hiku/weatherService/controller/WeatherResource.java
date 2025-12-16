@@ -48,24 +48,30 @@ public class WeatherResource {
                     windKmh = x.evaluate("/data/metData/ff_val", doc);
                 }
                 String windDir = x.evaluate("/data/metData/dd_shortText", doc);
-                String weatherIcon = x.evaluate("/data/metData/wwsyn_icon", doc);
-                String weatherDesc = x.evaluate("/data/metData/wwsyn_var_desc", doc);
+                String weatherIcon = x.evaluate("/data/metData/nn_icon", doc);
+                String weatherDesc = x.evaluate("/data/metData/nn_shortText", doc);
                 // snow description and unit (e.g. height of snow cover)
+                String snowValue = x.evaluate("/data/metData/snow", doc);
                 String snowDesc = x.evaluate("/data/metData/snow_var_desc", doc);
                 String snowUnit = x.evaluate("/data/metData/snow_var_unit", doc);
 
                 // Build a small JSON response. Values are strings as the source may
                 // contain empty elements; consumers should handle parsing.
-        String json = String.format(
-            "{\"temp\":%s,\"wind_kmh\":%s,\"wind_dir\":\"%s\",\"icon\":\"%s\",\"desc\":\"%s\",\"snow_var_desc\":\"%s\",\"snow_var_unit\":\"%s\"}",
-            (temp == null || temp.isEmpty()) ? "null" : temp,
-            (windKmh == null || windKmh.isEmpty()) ? "null" : windKmh,
-            escapeJson(windDir),
-            escapeJson(weatherIcon),
-            escapeJson(weatherDesc),
-            escapeJson(snowDesc),
-            escapeJson(snowUnit)
-        );
+                // Only include snow fields if the <snow> element has a value (not empty)
+                StringBuilder jsonBuilder = new StringBuilder();
+                jsonBuilder.append("{\"temp\":").append((temp == null || temp.isEmpty()) ? "null" : temp)
+                           .append(",\"wind_kmh\":").append((windKmh == null || windKmh.isEmpty()) ? "null" : windKmh)
+                           .append(",\"wind_dir\":\"").append(escapeJson(windDir)).append("\"")
+                           .append(",\"icon\":\"").append(escapeJson(weatherIcon)).append("\"")
+                           .append(",\"desc\":\"").append(escapeJson(weatherDesc)).append("\"");
+                
+                // Include snow fields only if <snow> element has a non-empty value
+                if (snowValue != null && !snowValue.isEmpty()) {
+                    jsonBuilder.append(",\"snow_var_desc\":\"").append(escapeJson(snowDesc)).append("\"")
+                               .append(",\"snow_var_unit\":\"").append(escapeJson(snowUnit)).append("\"");
+                }
+                jsonBuilder.append("}");
+                String json = jsonBuilder.toString();
 
                 return Response.ok(json, MediaType.APPLICATION_JSON).build();
             }
