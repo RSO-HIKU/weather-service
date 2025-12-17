@@ -19,13 +19,12 @@ import javax.xml.xpath.XPathFactory;
  * JSON payload with temperature, wind and a short weather descriptor.
  */
 
-@Path("/")  
+@Path("/current")
 public class WeatherResource {
 
     private static final String SOURCE_XML = "https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/sl/observationAms_KREDA-ICA_latest.xml";
 
     @GET
-    @Path("/current")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCurrent() {
         HttpURLConnection conn = null;
