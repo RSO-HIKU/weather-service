@@ -1,0 +1,37 @@
+apiVersion: skaffold/v4beta8
+kind: Config
+metadata:
+  name: weather-service
+build:
+  local:
+    push: false
+  tagPolicy:
+    sha256: {}
+  artifacts:
+    - image: weather-service
+      context: .
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+      - name: weather-service
+        chartPath: helm
+        namespace: dev
+        createNamespace: true
+        valuesFiles:
+          - helm/values-dev.yaml
+        setValueTemplates:
+          image.repository: "{{.IMAGE_REPO_weather_service}}"
+          image.tag: "{{.IMAGE_TAG_weather_service}}"
+        wait: true
+portForward:
+  - resourceType: service
+    resourceName: weather-service-nodeport
+    namespace: dev
+    port: 8086
+    localPort: 8086
+profiles:
+  - name: minikube
+    activation:
+      - kubeContext: minikube
