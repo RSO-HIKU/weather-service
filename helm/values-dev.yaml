@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: weather-service
+  tag: dev-latest
+  pullPolicy: Never
+
+service:
+  clusterIP:
+    port: 8086
+
+  nodePort:
+    port: 8086
+    nodePort: 30086
