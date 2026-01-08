@@ -30,7 +30,7 @@ spec:
             - sh
             - -c
             - |
-              set -euo pipefail
+              set -eu
               
               # JWT Auth (Keycloak / OIDC)
               export KUMULUZEE_JWT_AUTH_ISSUER="{{ .Values.jwtAuth.issuer }}"
