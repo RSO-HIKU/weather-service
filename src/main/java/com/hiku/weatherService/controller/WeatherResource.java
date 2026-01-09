@@ -1,5 +1,6 @@
 package com.hiku.weatherService.controller;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,6 +20,7 @@ import javax.xml.xpath.XPathFactory;
  * JSON payload with temperature, wind and a short weather descriptor.
  */
 
+@ApplicationScoped
 @Path("/")  
 public class WeatherResource {
 
