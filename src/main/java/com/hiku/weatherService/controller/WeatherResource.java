@@ -1,6 +1,7 @@
 package com.hiku.weatherService.controller;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -22,6 +23,8 @@ import javax.xml.xpath.XPathFactory;
 
 @ApplicationScoped
 @Path("/")  
+
+@RolesAllowed("user") 
 public class WeatherResource {
 
     private static final String SOURCE_XML = "https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/sl/observationAms_KREDA-ICA_latest.xml";
