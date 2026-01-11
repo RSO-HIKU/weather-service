@@ -1,5 +1,6 @@
 package com.hiku.weatherService.controller;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -20,7 +21,9 @@ import javax.xml.xpath.XPathFactory;
  * JSON payload with temperature, wind and a short weather descriptor.
  */
 
-@Path("/")
+@ApplicationScoped
+@Path("/")  
+
 @RolesAllowed("user") 
 public class WeatherResource {
 

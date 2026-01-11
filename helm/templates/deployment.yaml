@@ -25,6 +25,22 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.clusterIP.port }}
+          livenessProbe:
+            httpGet:
+              path: /api/weather/health/live
+              port: {{ .Values.service.clusterIP.port }}
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/weather/health
+              port: {{ .Values.service.clusterIP.port }}
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
           {{- if .Values.azure.enabled }}
           command:
             - sh
