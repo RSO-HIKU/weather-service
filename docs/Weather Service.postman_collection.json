@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "65249437-92b0-4e9e-af12-4eb624feac4d",
+		"name": "Weather Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49943279",
+		"_collection_link": "https://hiku99.postman.co/workspace/a6a05134-9dee-4d54-81a0-4bc7685fcc34/collection/49943279-65249437-92b0-4e9e-af12-4eb624feac4d?action=share&source=collection_link&creator=49943279"
+	},
+	"item": [
+		{
+			"name": "get weather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/weather/current",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"weather",
+						"current"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get weather",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/weather/current",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"weather",
+								"current"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Length",
+							"value": "64"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 22:41:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"temp\": -14.2,\n    \"wind_kmh\": 45,\n    \"wind_dir\": \"SZ\",\n    \"icon\": \"\",\n    \"desc\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/weather/health",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"weather",
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "health check",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/weather/health",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"weather",
+								"health"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Length",
+							"value": "253"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 22:42:05 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"service\": \"weather-service\",\n    \"status\": \"UP\",\n    \"timestamp\": \"2026-01-11T22:42:05.109786711Z\",\n    \"checks\": [\n        {\n            \"name\": \"memory\",\n            \"status\": \"UP\",\n            \"heapUsed\": 19912648,\n            \"heapMax\": 2082471936,\n            \"heapUsagePercent\": \"0.96\"\n        },\n        {\n            \"name\": \"uptime\",\n            \"status\": \"UP\",\n            \"uptimeMillis\": 1851242\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "health Liveness probe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/weather/health/live",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"weather",
+						"health",
+						"live"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "health Liveness probe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/weather/health/live",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"weather",
+								"health",
+								"live"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Length",
+							"value": "88"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 22:42:14 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"service\": \"weather-service\",\n    \"status\": \"UP\",\n    \"timestamp\": \"2026-01-11T22:42:14.345173452Z\"\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "clientId",
+				"value": "hiku-web",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://traefik-hiku-test.polandcentral.cloudapp.azure.com/auth/realms/hiku-test/protocol/openid-connect/token",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code_with_pkce",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://traefik-hiku-test.polandcentral.cloudapp.azure.com/auth/realms/hiku-test/protocol/openid-connect/auth",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "https://oauth.pstmn.io/v1/browser-callback",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": ""
+		}
+	]
+}
